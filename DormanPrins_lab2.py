@@ -32,7 +32,7 @@ class TDP(integr.Integrator):
         y5 = np.empty(tm.get_order())
         y6 = np.empty(tm.get_order())
         bet = np.empty(6)
-        while t < tk:
+        while t <= tk:
             self.k = np.resize(self.k, (1, tm.get_order()))
             hs = self.h
             temp = np.empty(tm.get_order())
@@ -94,7 +94,7 @@ class TDP(integr.Integrator):
             self.h = self.h / max(0.1, min(5.0, (math.pow((eps / self.geps), 0.2) / 0.9)))
             if self.geps < eps:
                 continue
-            while (tn < t + hs) and (tn < tm.t1):
+            while (tn <= t + hs) and (tn <= tm.t1):
                 teta = (tn - t) / hs
                 bet[0] = teta * (1 + teta * (-1337 / 480 + teta * (1039 / 360 + teta * (-1163 / 1152))))
                 bet[1] = 0
